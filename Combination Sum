@@ -1,0 +1,19 @@
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        ans=[]
+        candidates.sort()
+        def combinationSumUtil(current_sum,path,candidates):
+            for i in range(len(candidates)):
+                if(current_sum+candidates[i]==target):
+                    ans.append(path+[candidates[i]])
+                    return True
+                if(current_sum+candidates[i]>target):
+                    return False
+                
+                # print(path)
+                combinationSumUtil(current_sum+candidates[i],path+[candidates[i]],candidates[i:])
+                
+        
+        combinationSumUtil(0,[],candidates)
+        return ans
+        
