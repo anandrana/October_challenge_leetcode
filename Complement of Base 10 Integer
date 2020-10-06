@@ -1,0 +1,13 @@
+class Solution:
+    def bitwiseComplement(self, N: int) -> int:
+        x=bin(N).replace('0b','')
+        # print(x)
+        res=''
+        for st in x:
+            if(st=='0'):
+                res+='1'
+            else:
+                res+='0'
+        ans=int(res,2)
+        return ans
+        
