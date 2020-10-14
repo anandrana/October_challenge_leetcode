@@ -1,0 +1,27 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if(len(nums)<=3):
+            return max(nums)
+        
+            
+        list1=nums[:-1]
+        list2=nums[1:]
+        
+        temp_list1=[0]*len(list1)
+        temp_list1[0]=list1[0]
+        temp_list1[1]=max(list1[0],list1[1])
+        
+        temp_list2=[0]*len(list2)
+        temp_list2[0]=list2[0]
+        temp_list2[1]=max(list2[0],list2[1])
+        
+        
+        for i in range(2,len(list1)):
+            temp_list1[i]=max(temp_list1[i-1],list1[i]+temp_list1[i-2])
+        
+        for i in range(2,len(list2)):
+            temp_list2[i]=max(temp_list2[i-1],list2[i]+temp_list2[i-2])
+        
+        return max(max(temp_list1),max(temp_list2))
+            
+        
